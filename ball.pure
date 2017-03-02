@@ -1,0 +1,27 @@
+
+motion (x,y) (vx,vy) (ax,ay) (step dt:next)
+= [x,y,vx,vy] : motion (x1,y1) (vx1,vy1) (ax,ay) next &
+when
+  vx = if abs x > 3 then -vx else vx;
+  vy = if y < -3 then -vy else vy;
+  x1 = x+dt*vx+dt*dt*ax/2; y1 = y+dt*vy+dt*dt*ay/2;
+  vx1 = vx+dt*ax; vy1 = vy+dt*ay;
+end;
+
+motion _ (vx,vy) (ax,ay) (mouse x y:next)
+= () : motion (x,y) (vx,0) (ax,ay) next &;
+
+motion p (vx,vy) (ax,ay) (xvel vx1:next)
+= () : motion p (vx1,vy) (ax,ay) next &;
+motion p (vx,vy) (ax,ay) (yvel vy1:next)
+= () : motion p (vx,vy1) (ax,ay) next &;
+motion p (vx,vy) (ax,ay) (xacc ax1:next)
+= () : motion p (vx,vy) (ax1,ay) next &;
+motion p (vx,vy) (ax,ay) (yacc ay1:next)
+= () : motion p (vx,vy) (ax,ay1) next &;
+
+motion p (vx,vy) (ax,ay) (_:next)
+= () : motion p (vx,vy) (ax,ay) next &;
+
+using actor;
+ball = actor (motion (-3,3) (0.5,0) (0,-3));

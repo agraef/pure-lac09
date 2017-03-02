@@ -1,0 +1,40 @@
+
+/* Read an audio file and place it into a Pd array. This requires
+   libsndfile (http://www.mega-nerd.com/libsndfile/). */
+
+using "lib:libsndfile";
+
+extern SNDFILE* sf_open(char *path, int mode, void *sfinfo);
+extern int sf_close(SNDFILE *sndfile);
+extern long sf_seek(SNDFILE *sndfile, long frames, int whence);
+extern long sf_read_double(SNDFILE *sndfile, void *ptr, long items);
+
+/* Convenience function to open a soundfile for reading. */
+
+sf_load name::string = sentry sf_close (sf_open name 0x10 (imatrix 10));
+
+/* A simple object to read a file fname and place it in the array aname. The
+   current implementation assumes a mono (single channel) audio file. Audio
+   data is read in chunks corresponding to the size of the array in response
+   to 'bang' messages. The 'reset' message rewinds the file pointer to the
+   beginning of the audio file. */
+
+extern int pd_getbuffersize(char *name);
+extern void pd_setbuffer(char *name, expr* x);
+
+nonfix bang reset;
+
+wavefile fname aname = process with
+  // Rewind to the beginning of the file.
+  process reset = () when sf_seek fp 0 0; end;
+  // Read the next chunk of audio. Output bang if ok.
+  process bang  = if ok res then bang else () when
+    n = nsamples; wave = dmatrix n;
+    res = sf_read_double fp wave n;
+    pd_setbuffer aname wave;
+  end;
+  nsamples      = pd_getbuffersize aname;
+  ok res        = bigintp res && res>0;
+end when
+  fp::pointer = sf_load fname;
+end;
