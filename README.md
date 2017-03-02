@@ -4,9 +4,9 @@ Pure LAC09 Examples
 
 Git repository: https://github.com/agraef/pure-lac09
 
-You need to have [Pd] (0.43+), [Pure] (0.18+) and the [pd-pure] plugin (0.4+)
-installed to run these examples. The `waveplay` patch also requires
-[libsndfile], the `bounce` patch needs [Gem].
+You need to have [Pd][] (0.43+), [Pure][] (0.18+) and the [pd-pure][] plugin
+(0.4+) installed to run these examples. The `waveplay` patch also requires
+[libsndfile][], the `bounce` patch needs [Gem][].
 
 [Pd]:         http://crca.ucsd.edu/~msp/
 [Pure]:       http://pure-lang.googlecode.com
@@ -16,9 +16,9 @@ installed to run these examples. The `waveplay` patch also requires
 
 Pd and libsndfile are readily available on most Linux systems. Gem you may
 have to compile from source, but it's also included in some distributions of
-Pd, such as [Pd-l2ork] and [Purr Data]. Arch and Ubuntu packages for Pure and
-pd-pure can be found on the [Pure website], but are also easy to install from
-source.
+Pd, such as [Pd-l2ork][] and [Purr Data][]. Arch and Ubuntu packages for Pure
+and pd-pure can be found on the [Pure website][], but are also easy to install
+from source.
 
 [Pd-l2ork]: http://l2ork.music.vt.edu/main/make-your-own-l2ork/software/
 [Purr Data]: https://git.purrdata.net/jwilkes/purr-data
@@ -43,9 +43,9 @@ push the toggle above the `pd sound` subpatch in the main patch to connect the
 two patches. (These are in two separate patches connected via netsend/
 netreceive to prevent audio dropouts, see the Gem FAQ for details.)
 
-Try the different acceleration values (corresponding to the gravity of the
-[Moon], [Earth] and [Jupiter]). You can also click inside the Gem window to
-restart the animation at different positions.
+Try the different acceleration values (corresponding to the gravity of
+the [Moon][], [Earth][] and [Jupiter][]). You can also click inside the Gem
+window to restart the animation at different positions.
 
 [Moon]:    http://en.wikipedia.org/wiki/Moon
 [Earth]:   http://en.wikipedia.org/wiki/Earth
