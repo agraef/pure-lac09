@@ -9,8 +9,8 @@ You need to have [Pd][] (0.43+), [Pure][] (0.18+) and the [pd-pure][] plugin
 [libsndfile][], the `bounce` patch needs [Gem][].
 
 [Pd]:         http://crca.ucsd.edu/~msp/
-[Pure]:       http://pure-lang.googlecode.com
-[pd-pure]:    http://code.google.com/p/pure-lang/wiki/Addons#pd-pure
+[Pure]:       https://purelang.bitbucket.io/
+[pd-pure]:    https://bitbucket.org/purelang/pure-lang/wiki/Addons#markdown-header-pd-pure
 [Gem]:        http://gem.iem.at
 [libsndfile]: http://www.mega-nerd.com/libsndfile/
 
